@@ -24,6 +24,12 @@ h1 {
     margin: 0 0 1rem;
 }
 
+.notes-link {
+    color: #1f6feb;
+    font-weight: 600;
+    text-underline-offset: 3px;
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
