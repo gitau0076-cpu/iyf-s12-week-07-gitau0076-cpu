@@ -6,16 +6,9 @@ import {
     getState,
     setFilter,
     subscribe,
-    toggleTodo
+    toggleTodo,
 } from "./state.js";
-import {
-    clearCompletedButton,
-    filters,
-    form,
-    input,
-    renderTodos,
-    todoList
-} from "./ui.js";
+import { clearCompletedButton, filters, form, input, renderTodos, todoList } from "./ui.js";
 
 let editingId = null;
 

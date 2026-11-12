@@ -58,9 +58,11 @@ export function renderTodos(state, editingId, onEditCommit, onEditCancel) {
     });
 
     const visibleTodos = filterTodos(todos, filter);
-    todoList.replaceChildren(...visibleTodos.map((todo) =>
-        createTodoElement(todo, editingId, onEditCommit, onEditCancel)
-    ));
+    todoList.replaceChildren(
+        ...visibleTodos.map((todo) =>
+            createTodoElement(todo, editingId, onEditCommit, onEditCancel)
+        )
+    );
     const remaining = countRemaining(todos);
     itemsLeft.textContent = `${remaining} item${remaining === 1 ? "" : "s"} left`;
 }
