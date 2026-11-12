@@ -1,74 +1,37 @@
-import { countRemaining, filterTodos } from "./todo-logic.js";
 import {
-    addTodo, clearCompleted, deleteTodo, editTodo, getState, setFilter,
-    subscribe, toggleTodo
+    addTodo,
+    clearCompleted,
+    deleteTodo,
+    editTodo,
+    getState,
+    setFilter,
+    subscribe,
+    toggleTodo
 } from "./state.js";
+import {
+    clearCompletedButton,
+    filters,
+    form,
+    input,
+    renderTodos,
+    todoList
+} from "./ui.js";
 
-const form = document.getElementById("todo-form");
-const input = document.getElementById("todo-input");
-const todoList = document.getElementById("todo-list");
-const itemsLeft = document.getElementById("items-left");
-const filters = document.querySelectorAll(".filter");
-const clearCompletedButton = document.getElementById("clear-completed");
 let editingId = null;
 
-function createTodoElement(todo) {
-    const item = document.createElement("li");
-    item.className = "todo-item";
-    item.dataset.id = String(todo.id);
-    if (todo.completed) item.classList.add("completed");
-
-    if (editingId === todo.id) {
-        const editInput = document.createElement("input");
-        editInput.className = "edit";
-        editInput.value = todo.text;
-        editInput.setAttribute("aria-label", "Edit task");
-        editInput.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                editTodo(todo.id, editInput.value);
-                editingId = null;
-                renderTodos();
-            } else if (event.key === "Escape") {
-                editingId = null;
-                renderTodos();
-            }
-        });
-        requestAnimationFrame(() => {
-            editInput.focus();
-            editInput.select();
-        });
-        item.appendChild(editInput);
-    } else {
-        const text = document.createElement("button");
-        text.type = "button";
-        text.className = "todo-text";
-        text.textContent = todo.text;
-        text.setAttribute("aria-label", `${todo.completed ? "Mark" : "Complete"} ${todo.text}`);
-        item.appendChild(text);
-    }
-
-    const deleteButton = document.createElement("button");
-    deleteButton.type = "button";
-    deleteButton.className = "delete";
-    deleteButton.textContent = "Delete";
-    deleteButton.setAttribute("aria-label", `Delete ${todo.text}`);
-    item.appendChild(deleteButton);
-    return item;
+function renderApp() {
+    renderTodos(getState(), editingId, handleEditCommit, cancelEdit);
 }
 
-function renderTodos() {
-    const { todos, filter } = getState();
-    filters.forEach((button) => {
-        const isActive = button.dataset.filter === filter;
-        button.classList.toggle("active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
-    });
+function handleEditCommit(id, text) {
+    editTodo(id, text);
+    editingId = null;
+    renderApp();
+}
 
-    const visibleTodos = filterTodos(todos, filter);
-    todoList.replaceChildren(...visibleTodos.map(createTodoElement));
-    const remaining = countRemaining(todos);
-    itemsLeft.textContent = `${remaining} item${remaining === 1 ? "" : "s"} left`;
+function cancelEdit() {
+    editingId = null;
+    renderApp();
 }
 
 form.addEventListener("submit", (event) => {
@@ -101,7 +64,7 @@ todoList.addEventListener("dblclick", (event) => {
     if (!text) return;
 
     editingId = Number(text.closest(".todo-item").dataset.id);
-    renderTodos();
+    renderApp();
 });
 
 filters.forEach((button) => {
@@ -110,5 +73,5 @@ filters.forEach((button) => {
 
 clearCompletedButton.addEventListener("click", clearCompleted);
 
-subscribe(renderTodos);
-renderTodos();
+subscribe(renderApp);
+renderApp();
