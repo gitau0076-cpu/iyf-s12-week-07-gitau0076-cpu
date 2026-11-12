@@ -75,16 +75,14 @@ function addTodo(text) {
     todos.push({
         id: nextId++,
         text,
-        completed: false
+        completed: false,
     });
 
     renderTodos();
 }
 
 function toggleTodo(id) {
-    todos = todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    );
+    todos = todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo));
 
     renderTodos();
 }
@@ -115,9 +113,7 @@ function saveEdit(id, value) {
     const text = value.trim();
 
     if (text) {
-        todos = todos.map((todo) =>
-            todo.id === id ? { ...todo, text } : todo
-        );
+        todos = todos.map((todo) => (todo.id === id ? { ...todo, text } : todo));
     }
 
     editingId = null;

@@ -1,47 +1,62 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f4f3ee">
-    <title>Little Notes</title>
-    <link rel="stylesheet" href="notes.css">
-    <script type="module" src="notes.js"></script>
-</head>
-<body>
-    <main class="page-shell">
-        <header class="page-header">
-            <div>
-                <p class="eyebrow">A little space for your thoughts</p>
-                <h1>Little Notes<span>.</span></h1>
-            </div>
-            <p class="saved-indicator"><span aria-hidden="true"></span> Saved on this device</p>
-        </header>
-
-        <section class="composer" aria-labelledby="composer-title">
-            <h2 id="composer-title">Write a note</h2>
-            <form id="note-form">
-                <label for="note-title">Title <span class="optional">(optional)</span></label>
-                <input id="note-title" name="title" type="text" maxlength="80" placeholder="Give it a title">
-                <label for="note-content">Your note</label>
-                <textarea id="note-content" name="content" rows="5" maxlength="2000" placeholder="What's on your mind?" required></textarea>
-                <div class="composer-footer">
-                    <span class="hint">Your notes stay in this browser.</span>
-                    <button class="primary-button" type="submit">Save note <span aria-hidden="true">↗</span></button>
-                </div>
-            </form>
-        </section>
-
-        <section class="notes-section" aria-labelledby="notes-title">
-            <div class="section-heading">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#f4f3ee" />
+        <title>Little Notes</title>
+        <link rel="stylesheet" href="notes.css" />
+        <script type="module" src="notes.js"></script>
+    </head>
+    <body>
+        <main class="page-shell">
+            <header class="page-header">
                 <div>
-                    <p class="eyebrow">Your collection</p>
-                    <h2 id="notes-title">Saved notes</h2>
+                    <p class="eyebrow">A little space for your thoughts</p>
+                    <h1>Little Notes<span>.</span></h1>
                 </div>
-                <span id="note-count" class="note-count" aria-live="polite">0 notes</span>
-            </div>
-            <div id="notes-list" class="notes-list" aria-live="polite"></div>
-        </section>
-    </main>
-</body>
+                <p class="saved-indicator"><span aria-hidden="true"></span> Saved on this device</p>
+            </header>
+
+            <section class="composer" aria-labelledby="composer-title">
+                <h2 id="composer-title">Write a note</h2>
+                <form id="note-form">
+                    <label for="note-title">Title <span class="optional">(optional)</span></label>
+                    <input
+                        id="note-title"
+                        name="title"
+                        type="text"
+                        maxlength="80"
+                        placeholder="Give it a title"
+                    />
+                    <label for="note-content">Your note</label>
+                    <textarea
+                        id="note-content"
+                        name="content"
+                        rows="5"
+                        maxlength="2000"
+                        placeholder="What's on your mind?"
+                        required
+                    ></textarea>
+                    <div class="composer-footer">
+                        <span class="hint">Your notes stay in this browser.</span>
+                        <button class="primary-button" type="submit">
+                            Save note <span aria-hidden="true">↗</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="notes-section" aria-labelledby="notes-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Your collection</p>
+                        <h2 id="notes-title">Saved notes</h2>
+                    </div>
+                    <span id="note-count" class="note-count" aria-live="polite">0 notes</span>
+                </div>
+                <div id="notes-list" class="notes-list" aria-live="polite"></div>
+            </section>
+        </main>
+    </body>
 </html>

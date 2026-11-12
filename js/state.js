@@ -4,7 +4,7 @@ import {
     clearCompleted as clearCompletedLogic,
     deleteTodo as deleteTodoLogic,
     editTodo as editTodoLogic,
-    toggleTodo as toggleTodoLogic
+    toggleTodo as toggleTodoLogic,
 } from "./todo-logic.js";
 
 const STATE_STORAGE_KEY = "appState";
@@ -13,8 +13,12 @@ const FIRST_TODO_ID = 0;
 const TODO_ID_INCREMENT = 1;
 
 function isTodo(todo) {
-    return todo && Number.isInteger(todo.id) &&
-        typeof todo.text === "string" && typeof todo.completed === "boolean";
+    return (
+        todo &&
+        Number.isInteger(todo.id) &&
+        typeof todo.text === "string" &&
+        typeof todo.completed === "boolean"
+    );
 }
 
 function loadState() {
@@ -24,18 +28,16 @@ function loadState() {
     if (!savedState || typeof savedState !== "object" || Array.isArray(savedState)) {
         stateToRestore = {
             todos: getFromStorage("todos", []),
-            filter: getFromStorage("filter", "all")
+            filter: getFromStorage("filter", "all"),
         };
     }
 
-    const todos = Array.isArray(stateToRestore.todos)
-        ? stateToRestore.todos.filter(isTodo)
-        : [];
+    const todos = Array.isArray(stateToRestore.todos) ? stateToRestore.todos.filter(isTodo) : [];
 
     return {
         todos,
         filter: VALID_FILTERS.includes(stateToRestore.filter) ? stateToRestore.filter : "all",
-        theme: stateToRestore.theme === "dark" ? "dark" : "light"
+        theme: stateToRestore.theme === "dark" ? "dark" : "light",
     };
 }
 
@@ -57,7 +59,7 @@ function createStore(initialState) {
         subscribe(listener) {
             listeners.add(listener);
             return () => listeners.delete(listener);
-        }
+        },
     };
 }
 
@@ -76,10 +78,9 @@ export function setTheme(theme) {
 
 export function addTodo(text) {
     const { todos } = store.getState();
-    const nextTodoId = todos.reduce(
-        (highestId, todo) => Math.max(highestId, todo.id),
-        FIRST_TODO_ID
-    ) + TODO_ID_INCREMENT;
+    const nextTodoId =
+        todos.reduce((highestId, todo) => Math.max(highestId, todo.id), FIRST_TODO_ID) +
+        TODO_ID_INCREMENT;
     const nextTodos = addTodoLogic(todos, text, nextTodoId, new Date().toISOString());
     if (nextTodos !== todos) store.setState({ todos: nextTodos });
 }

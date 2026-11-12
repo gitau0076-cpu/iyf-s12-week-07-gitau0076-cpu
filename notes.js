@@ -8,9 +8,13 @@ const notesList = document.getElementById("notes-list");
 const noteCount = document.getElementById("note-count");
 
 function isNote(value) {
-    return value && typeof value.id === "string" &&
-        typeof value.title === "string" && typeof value.content === "string" &&
-        typeof value.createdAt === "string";
+    return (
+        value &&
+        typeof value.id === "string" &&
+        typeof value.title === "string" &&
+        typeof value.content === "string" &&
+        typeof value.createdAt === "string"
+    );
 }
 
 const savedNotes = getFromStorage(STORAGE_KEY, []);
@@ -39,7 +43,11 @@ function createNoteCard(note) {
     date.dateTime = Number.isNaN(createdAt.getTime()) ? "" : createdAt.toISOString();
     date.textContent = Number.isNaN(createdAt.getTime())
         ? "Saved note"
-        : createdAt.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+        : createdAt.toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+          });
 
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
@@ -79,12 +87,17 @@ form.addEventListener("submit", (event) => {
         return;
     }
 
-    notes = [{
-        id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(16).slice(2)}`,
-        title: titleInput.value.trim(),
-        content,
-        createdAt: new Date().toISOString()
-    }, ...notes];
+    notes = [
+        {
+            id:
+                globalThis.crypto?.randomUUID?.() ??
+                `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+            title: titleInput.value.trim(),
+            content,
+            createdAt: new Date().toISOString(),
+        },
+        ...notes,
+    ];
     saveNotes();
     renderNotes();
     form.reset();
