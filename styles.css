@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 2rem 1rem;
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+    color: #1c2128;
+    background: #f6f8fa;
+}
+
+.container {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+}
+
+h1 {
+    margin: 0 0 1rem;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+                                                                                                                                                                               
+#todo-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+input {
+    font: inherit;
+}
+
+#todo-input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.6rem;
+    font: inherit;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+}
+
+button {
+    padding: 0.5rem 0.9rem;
+    font: inherit;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid #1f6feb;
+    outline-offset: 2px;
+}
+
+#todo-form button,
+.filter.active {
+    color: #fff;
+    border-color: #1f6feb;
+    background: #1f6feb;
+}
+
+.filters {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+#todo-list {
+    padding: 0;
+    list-style: none;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.25rem;
+    border-bottom: 1px solid #d0d7de;
+}
+
+.todo-text {
+    flex: 1;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+.todo-text:focus-visible {
+    outline-offset: 4px;
+}
+
+.todo-item.completed .todo-text {
+    color: #57606a;
+    text-decoration: line-through;
+}
+
+.delete {
+    color: #cf222e;
+    white-space: nowrap;
+    opacity: 0;
+}
+
+.todo-item:hover .delete,
+.todo-item:focus-within .delete {
+    opacity: 1;
+}
+
+.edit {
+    flex: 1;
+    min-width: 0;
+    padding: 0.3rem;
+    font: inherit;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    color: #57606a;
+}
