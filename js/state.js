@@ -69,11 +69,11 @@ export const getState = store.getState;
 export const subscribe = store.subscribe;
 
 export function setFilter(filter) {
-    if (VALID_FILTERS.includes(filter)) store.setState({ filter });
+    if (VALID_FILTERS.includes(filter)) {store.setState({ filter });}
 }
 
 export function setTheme(theme) {
-    if (theme === "light" || theme === "dark") store.setState({ theme });
+    if (theme === "light" || theme === "dark") {store.setState({ theme });}
 }
 
 export function addTodo(text) {
@@ -82,7 +82,7 @@ export function addTodo(text) {
         todos.reduce((highestId, todo) => Math.max(highestId, todo.id), FIRST_TODO_ID) +
         TODO_ID_INCREMENT;
     const nextTodos = addTodoLogic(todos, text, nextTodoId, new Date().toISOString());
-    if (nextTodos !== todos) store.setState({ todos: nextTodos });
+    if (nextTodos !== todos) {store.setState({ todos: nextTodos });}
 }
 
 export function toggleTodo(id) {
@@ -96,7 +96,7 @@ export function deleteTodo(id) {
 export function editTodo(id, text) {
     const todos = store.getState().todos;
     const nextTodos = editTodoLogic(todos, id, text);
-    if (nextTodos !== todos) store.setState({ todos: nextTodos });
+    if (nextTodos !== todos) {store.setState({ todos: nextTodos });}
 }
 
 export function clearCompleted() {

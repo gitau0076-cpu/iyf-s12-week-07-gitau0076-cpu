@@ -42,7 +42,7 @@ form.addEventListener("submit", (event) => {
 
 todoList.addEventListener("click", (event) => {
     const item = event.target.closest(".todo-item");
-    if (!item) return;
+    if (!item) {return;}
 
     const id = Number(item.dataset.id);
     if (event.target.closest(".delete")) {
@@ -54,7 +54,7 @@ todoList.addEventListener("click", (event) => {
 
 todoList.addEventListener("dblclick", (event) => {
     const text = event.target.closest(".todo-text");
-    if (!text) return;
+    if (!text) {return;}
 
     editingId = Number(text.closest(".todo-item").dataset.id);
     renderApp();

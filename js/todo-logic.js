@@ -1,7 +1,7 @@
 // Pure todo functions: they receive data and return data without touching the DOM or storage.
 export function addTodo(todos, text, id, createdAt) {
     const cleanText = text.trim();
-    if (!cleanText || !Number.isInteger(id)) return todos;
+    if (!cleanText || !Number.isInteger(id)) {return todos;}
 
     return [...todos, { id, text: cleanText, completed: false, createdAt }];
 }
@@ -16,7 +16,7 @@ export function deleteTodo(todos, id) {
 
 export function editTodo(todos, id, text) {
     const cleanText = text.trim();
-    if (!cleanText) return todos;
+    if (!cleanText) {return todos;}
 
     return todos.map((todo) => (todo.id === id ? { ...todo, text: cleanText } : todo));
 }
@@ -26,8 +26,8 @@ export function clearCompleted(todos) {
 }
 
 export function filterTodos(todos, filter) {
-    if (filter === "active") return todos.filter((todo) => !todo.completed);
-    if (filter === "completed") return todos.filter((todo) => todo.completed);
+    if (filter === "active") {return todos.filter((todo) => !todo.completed);}
+    if (filter === "completed") {return todos.filter((todo) => todo.completed);}
     return todos;
 }
 
