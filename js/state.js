@@ -9,6 +9,8 @@ import {
 
 const STATE_STORAGE_KEY = "appState";
 const VALID_FILTERS = ["all", "active", "completed"];
+const FIRST_TODO_ID = 0;
+const TODO_ID_INCREMENT = 1;
 
 function isTodo(todo) {
     return todo && Number.isInteger(todo.id) &&
@@ -74,8 +76,11 @@ export function setTheme(theme) {
 
 export function addTodo(text) {
     const { todos } = store.getState();
-    const nextId = todos.reduce((maxId, todo) => Math.max(maxId, todo.id), 0) + 1;
-    const nextTodos = addTodoLogic(todos, text, nextId, new Date().toISOString());
+    const nextTodoId = todos.reduce(
+        (highestId, todo) => Math.max(highestId, todo.id),
+        FIRST_TODO_ID
+    ) + TODO_ID_INCREMENT;
+    const nextTodos = addTodoLogic(todos, text, nextTodoId, new Date().toISOString());
     if (nextTodos !== todos) store.setState({ todos: nextTodos });
 }
 
