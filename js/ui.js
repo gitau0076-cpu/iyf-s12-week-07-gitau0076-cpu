@@ -11,7 +11,7 @@ export function createTodoElement(todo, editingId, onEditCommit, onEditCancel) {
     const item = document.createElement("li");
     item.className = "todo-item";
     item.dataset.id = String(todo.id);
-    if (todo.completed) item.classList.add("completed");
+    if (todo.completed) {item.classList.add("completed");}
 
     if (editingId === todo.id) {
         const editInput = document.createElement("input");
