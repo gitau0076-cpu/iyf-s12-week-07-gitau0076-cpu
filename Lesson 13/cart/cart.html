@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f3ec">
+  <title>Market Basket | Cart</title>
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Market Basket home">
+        <span class="brand-icon" aria-hidden="true">m</span>
+        <span>market basket<span class="brand-period">.</span></span>
+      </a>
+      <a class="cart-link" href="#your-cart" aria-label="Your cart, 0 items">
+        <span class="cart-icon" aria-hidden="true">▱</span>
+        <span>Your basket</span>
+        <span class="cart-badge" id="header-count">0</span>
+      </a>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Good things, close to home</p>
+        <h1 id="page-title">The neighbourhood<br>pantry<span class="brand-period">.</span></h1>
+        <p class="intro-copy">A few everyday favourites, ready for your basket.</p>
+      </section>
+
+      <div class="shop-layout">
+        <section class="products-section" aria-labelledby="products-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">From the counter</p>
+              <h2 id="products-title">Today’s picks</h2>
+            </div>
+            <span class="small-note">Freshly stocked</span>
+          </div>
+          <div class="product-grid" id="product-list" aria-live="polite"></div>
+        </section>
+
+        <aside class="cart-panel" id="your-cart" aria-labelledby="cart-title">
+          <div class="cart-heading">
+            <div>
+              <p class="section-kicker">Your selection</p>
+              <h2 id="cart-title">Your basket</h2>
+            </div>
+            <span class="panel-count" id="panel-count">0</span>
+          </div>
+          <div class="cart-items" id="cart-items" aria-live="polite"></div>
+          <div class="cart-empty" id="cart-empty">
+            <span class="empty-basket" aria-hidden="true">＋</span>
+            <p>Your basket is waiting.</p>
+            <span>Choose something from today’s picks.</span>
+          </div>
+          <div class="cart-summary" id="cart-summary" hidden>
+            <div class="summary-row"><span>Subtotal</span><strong id="cart-total">KSh 0</strong></div>
+            <p class="delivery-note">Delivery can be arranged with your local shop.</p>
+          </div>
+          <div class="cart-actions">
+            <button class="undo-button" id="undo-button" type="button" disabled>↶ Undo last change</button>
+            <button class="clear-button" id="clear-cart" type="button" disabled>Clear basket</button>
+          </div>
+          <p class="storage-note"><span class="storage-dot" aria-hidden="true"></span> Your basket is saved on this device.</p>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>Market Basket</span>
+      <span>Little shops make a neighbourhood.</span>
+    </footer>
+  </div>
+  <script src="cart.js"></script>
+</body>
+</html>
