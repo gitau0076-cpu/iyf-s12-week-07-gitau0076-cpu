@@ -106,7 +106,7 @@ form.addEventListener("submit", (event) => {
 
 notesList.addEventListener("click", (event) => {
     const button = event.target.closest("[data-delete-id]");
-    if (!button) return;
+    if (!button) {return;}
     notes = notes.filter((note) => note.id !== button.dataset.deleteId);
     saveNotes();
     renderNotes();

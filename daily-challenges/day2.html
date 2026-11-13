@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Day 2: Recent Searches</title>
+        <link rel="stylesheet" href="day2.css" />
+        <script type="module" src="day2.js"></script>
+    </head>
+    <body>
+        <main class="search-card">
+            <p class="eyebrow">Daily Challenge · Day 2</p>
+            <h1>Recent Searches</h1>
+            <p class="intro">Search for something, then pick a recent search to run it again.</p>
+
+            <form id="search-form" role="search">
+                <label for="search-input">Search</label>
+                <div class="search-controls">
+                    <input
+                        id="search-input"
+                        name="q"
+                        type="search"
+                        autocomplete="off"
+                        placeholder="Try “JavaScript”"
+                        aria-controls="search-history"
+                        aria-expanded="false"
+                        required
+                    />
+                    <button type="submit">Search</button>
+                </div>
+                <ul id="search-history" class="history" role="listbox" aria-label="Recent searches" hidden></ul>
+            </form>
+
+            <p id="search-status" class="status" role="status" aria-live="polite">
+                Your last five searches will appear here.
+            </p>
+        </main>
+    </body>
+</html>
