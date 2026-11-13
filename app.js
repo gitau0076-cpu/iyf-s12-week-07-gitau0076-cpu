@@ -62,8 +62,10 @@ function createTodoElement(todo) {
 
 function renderTodos() {
     const visibleTodos = todos.filter((todo) => {
-        if (currentFilter === "active") return !todo.completed;
-        if (currentFilter === "completed") return todo.completed;
+        if (currentFilter === "active") {
+            return !todo.completed;
+        }
+        if (currentFilter === "completed") {return todo.completed;}
         return true;
     });
 
@@ -137,7 +139,7 @@ form.addEventListener("submit", (event) => {
 // One delegated click listener handles task completion and deletion.
 todoList.addEventListener("click", (event) => {
     const item = event.target.closest(".todo-item");
-    if (!item) return;
+    if (!item) {return;}
 
     const id = Number(item.dataset.id);
 
@@ -154,7 +156,7 @@ todoList.addEventListener("click", (event) => {
 // Double-click a task's text to edit it.
 todoList.addEventListener("dblclick", (event) => {
     const text = event.target.closest(".todo-text");
-    if (!text) return;
+    if (!text) {return;}
 
     const item = text.closest(".todo-item");
     editingId = Number(item.dataset.id);
