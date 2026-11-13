@@ -6,6 +6,17 @@ export const todoList = document.getElementById("todo-list");
 export const itemsLeft = document.getElementById("items-left");
 export const filters = document.querySelectorAll(".filter");
 export const clearCompletedButton = document.getElementById("clear-completed");
+export const themeToggleButton = document.getElementById("theme-toggle");
+
+export function applyTheme(theme) {
+    const isDark = theme === "dark";
+    document.body.dataset.theme = isDark ? "dark" : "light";
+    themeToggleButton.textContent = isDark ? "Light mode" : "Dark mode";
+    themeToggleButton.setAttribute(
+        "aria-label",
+        `Switch to ${isDark ? "light" : "dark"} mode`
+    );
+}
 
 export function createTodoElement(todo, editingId, onEditCommit, onEditCancel) {
     const item = document.createElement("li");

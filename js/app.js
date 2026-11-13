@@ -5,14 +5,25 @@ import {
     editTodo,
     getState,
     setFilter,
+    setTheme,
     subscribe,
     toggleTodo,
 } from "./state.js";
-import { clearCompletedButton, filters, form, input, renderTodos, todoList } from "./ui.js";
+import {
+    applyTheme,
+    clearCompletedButton,
+    filters,
+    form,
+    input,
+    renderTodos,
+    themeToggleButton,
+    todoList,
+} from "./ui.js";
 
 let editingId = null;
 
 function renderApp() {
+    applyTheme(getState().theme);
     renderTodos(getState(), editingId, handleEditCommit, cancelEdit);
 }
 
@@ -65,6 +76,10 @@ filters.forEach((button) => {
 });
 
 clearCompletedButton.addEventListener("click", clearCompleted);
+
+themeToggleButton.addEventListener("click", () => {
+    setTheme(getState().theme === "dark" ? "light" : "dark");
+});
 
 subscribe(renderApp);
 renderApp();
