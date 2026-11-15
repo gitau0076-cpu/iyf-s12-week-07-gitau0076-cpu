@@ -24,7 +24,7 @@
     "vitest": "^5.1.0"
   },
   "description": "A small browser-based To-Do app built with ES modules. Tasks are saved in `localStorage`; malformed or unavailable stored data is handled safely.",
-  "main": "js/app.js",
+  "main": "app.js",
   "dependencies": {
     "acorn": "^8.19.0",
     "acorn-jsx": "^5.3.2",
