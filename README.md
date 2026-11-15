@@ -23,7 +23,7 @@ iyf-s12-week-07-{gitau0076-cpu}/
 ├── package-lock.json     ← committed
 ├── .gitignore            ← MUST list node_modules/
 └── README.md
-```text
+```
 ## How to Run
 1. node --version
 2. npm.cmd install
