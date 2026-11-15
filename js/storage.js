@@ -1,18 +1,36 @@
+// Safely save, retrieve, and remove data from localStorage.
+
 export function saveToStorage(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
+    try {
+        const serializedData = JSON.stringify(data);
+        globalThis.localStorage.setItem(key, serializedData);
+        return true;
+    } catch {
+        // Storage may be unavailable or full.
+        return false;
+    }
 }
 
 export function getFromStorage(key, defaultValue = null) {
-    const data = localStorage.getItem(key);
-    if (data === null) {return defaultValue;}
-
     try {
+        const data = globalThis.localStorage.getItem(key);
+
+        if (data === null) {
+            return defaultValue;
+        }
+
         return JSON.parse(data);
     } catch {
+        // Handles unavailable storage and invalid JSON.
         return defaultValue;
     }
 }
 
 export function removeFromStorage(key) {
-    localStorage.removeItem(key);
+    try {
+        globalThis.localStorage.removeItem(key);
+        return true;
+    } catch {
+        return false;
+    }
 }
