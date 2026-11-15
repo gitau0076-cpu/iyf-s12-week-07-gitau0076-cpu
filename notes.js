@@ -1,5 +1,3 @@
-import { getFromStorage, saveToStorage } from "./js/storage.js";
-
 const STORAGE_KEY = "little-notes";
 const form = document.getElementById("note-form");
 const titleInput = document.getElementById("note-title");
@@ -17,11 +15,24 @@ function isNote(value) {
     );
 }
 
-const savedNotes = getFromStorage(STORAGE_KEY, []);
+function getSavedNotes() {
+    try {
+        const savedNotes = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
+        return Array.isArray(savedNotes) ? savedNotes : [];
+    } catch {
+        return [];
+    }
+}
+
+const savedNotes = getSavedNotes();
 let notes = Array.isArray(savedNotes) ? savedNotes.filter(isNote) : [];
 
 function saveNotes() {
-    saveToStorage(STORAGE_KEY, notes);
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+    } catch {
+        // Keep the notes usable for this session if browser storage is unavailable.
+    }
 }
 
 function createNoteCard(note) {
