@@ -2,8 +2,6 @@
 
 ## Project Description
 This repository contains JavaScript practice projects focused on clean code, modular structure, state management, browser storage, debugging, and automated testing. It includes interactive browser apps and daily challenges built with HTML, CSS, and JavaScript modules.
-## Live page
-[My live](https://gitau0076-cpu.github.io/iyf-s12-week-07-gitau0076-cpu/)
 ```text
 ## Project Structure
 iyf-s12-week-07-{gitau0076-cpu}/
@@ -26,10 +24,11 @@ iyf-s12-week-07-{gitau0076-cpu}/
 ├── .gitignore            ← MUST list node_modules/
 └── README.md
 ```
+
 ## How to Run
 1. node --version
-2. npm  install
-3. npm run dev
+2. npm.cmd install
+3. npm.cmd run dev
 
 ## Features
 - Manage tasks by adding, editing, completing, deleting, and filtering them.

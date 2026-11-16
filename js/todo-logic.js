@@ -1,13 +1,34 @@
-// Pure todo functions: they receive data and return data without touching the DOM or storage.
+// Pure functions for managing todos.
+// This file must not access the DOM or localStorage.
+
 export function addTodo(todos, text, id, createdAt) {
     const cleanText = text.trim();
-    if (!cleanText || !Number.isInteger(id)) {return todos;}
 
-    return [...todos, { id, text: cleanText, completed: false, createdAt }];
+    if (!cleanText || !Number.isInteger(id)) {
+        return todos;
+    }
+
+    const newTodo = {
+        id,
+        text: cleanText,
+        completed: false,
+        createdAt,
+    };
+
+    return [...todos, newTodo];
 }
 
 export function toggleTodo(todos, id) {
-    return todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo));
+    return todos.map((todo) => {
+        if (todo.id !== id) {
+            return todo;
+        }
+
+        return {
+            ...todo,
+            completed: !todo.completed,
+        };
+    });
 }
 
 export function deleteTodo(todos, id) {
@@ -16,9 +37,21 @@ export function deleteTodo(todos, id) {
 
 export function editTodo(todos, id, text) {
     const cleanText = text.trim();
-    if (!cleanText) {return todos;}
 
-    return todos.map((todo) => (todo.id === id ? { ...todo, text: cleanText } : todo));
+    if (!cleanText) {
+        return todos;
+    }
+
+    return todos.map((todo) => {
+        if (todo.id !== id) {
+            return todo;
+        }
+
+        return {
+            ...todo,
+            text: cleanText,
+        };
+    });
 }
 
 export function clearCompleted(todos) {
@@ -26,8 +59,14 @@ export function clearCompleted(todos) {
 }
 
 export function filterTodos(todos, filter) {
-    if (filter === "active") {return todos.filter((todo) => !todo.completed);}
-    if (filter === "completed") {return todos.filter((todo) => todo.completed);}
+    if (filter === "active") {
+        return todos.filter((todo) => !todo.completed);
+    }
+
+    if (filter === "completed") {
+        return todos.filter((todo) => todo.completed);
+    }
+
     return todos;
 }
 
