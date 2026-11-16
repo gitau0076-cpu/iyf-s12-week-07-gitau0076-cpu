@@ -1,13 +1,3 @@
-//Before (Messy)
-function getD(u) {
-    fetch(u).then(r => r.json()).then(d => {
-        let x = document.getElementById("box");
-        x.innerHTML = "<p>" + d.n + "</p>";
-        localStorage.setItem("u", JSON.stringify(d));
-    });
-}
-//After
-// Persist user data safely without crashing if storage quota is exceeded
 function saveUserToStorage(user) {
     try {
         localStorage.setItem("current_user", JSON.stringify(user));
@@ -18,11 +8,11 @@ function saveUserToStorage(user) {
 
 function displayUserName(name) {
     const container = document.getElementById("box");
-    if (!container) return;
+    if (!container) {return;}
     container.innerHTML = `<p>${name}</p>`;
 }
 
-async function fetchAndRenderUser(apiUrl) {
+export async function fetchAndRenderUser(apiUrl) {
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
