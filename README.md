@@ -26,8 +26,8 @@ iyf-s12-week-07-{gitau0076-cpu}/
 ```
 ## How to Run
 1. node --version
-2. npm.cmd install
-3. npm.cmd run dev
+2. npm  install
+3. npm run dev
 
 ## Features
 - Manage tasks by adding, editing, completing, deleting, and filtering them.
