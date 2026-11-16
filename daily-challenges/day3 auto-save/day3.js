@@ -19,7 +19,7 @@ function loadDraft() {
 
 function restoreDraft() {
     const savedDraft = loadDraft();
-    if (!savedDraft) return;
+    if (!savedDraft) {return;}
 
     formFields.forEach((field) => {
         if (typeof savedDraft[field.name] === "string") {
