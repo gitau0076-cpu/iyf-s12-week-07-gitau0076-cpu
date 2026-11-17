@@ -54,3 +54,9 @@ iyf-s12-week-07-{gitau0076-cpu}/
 - Making saved data recover safely when storage is empty, malformed, or unavailable.
 - Checking that form drafts and search history persist across refreshes and clear at the correct time.
 - Keeping page behavior and styling organized while working on several small exercises.
+
+### Collaboration
+- **Partner:** [@micheal-yugi](https://github.com/michael-yugi)
+-  **PR I opened:** https://github.com/gitau0076-cpu/iyf-s12-week-07-gitau0076-cpu/pull/4
+- **PR I reviewed:** https://github.com/michael-yugi/iyf-s12-week-07-michael-yugi/pull/3#issue-6453303104
+
